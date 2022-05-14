@@ -1,15 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const App = () => {
 
-    return (
-        <div>
-            <h1>
-                Hello
-            </h1>
-        </div>
-    )
-}
+import Header from "./components/header";
+const App = () =>
+
+(
+    <>
+
+
+        <h2><Header /></h2>
+
+    </>
+
+)
+
 
 ReactDOM.render(<App />, document.getElementById('root'))
