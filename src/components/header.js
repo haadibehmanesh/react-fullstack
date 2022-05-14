@@ -32,7 +32,7 @@ class Header extends Component {
         return (
             <>
                 <header onClick={() => { console.log('i was clicked') }}>
-                    LOGO
+                    <div className='logo'> LOGO</div>
                 </header>
                 <input onChange={(e) => this.inputChangeHandeler(e)}>
                 </input>

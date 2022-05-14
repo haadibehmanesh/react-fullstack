@@ -1,19 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
-
-
 import Header from "./components/header";
-const App = () =>
 
-(
-    <>
+class App extends Component {
+    render() {
+        return (<>
 
 
-        <h2><Header /></h2>
+            <h2><Header /></h2>
 
-    </>
+        </>);
+    }
+}
 
-)
-
+export default App;
 
 ReactDOM.render(<App />, document.getElementById('root'))
