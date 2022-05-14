@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Header from "./components/header";
+import NewsList from "./components/news_list";
+import JSON from './db.json';
+
 
 class App extends Component {
+    state = {
+        news: JSON
+    }
     render() {
+        console.log(this.state.news)
         return (<>
 
-
-            <h2><Header /></h2>
+            <Header />
+            <NewsList news={this.state.news} />
 
         </>);
     }
