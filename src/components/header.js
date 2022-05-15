@@ -4,10 +4,11 @@ import React, { Component } from "react";
 class Header extends Component {
 
     state = {
-        'name': 'Hadi',
-        'title': 'The title is',
-        'keyword': '',
-        'count': 0
+        active: true,
+        name: 'Hadi',
+        title: 'The title is',
+        keyword: '',
+        count: 0
 
     }
     addOne() {
@@ -19,7 +20,9 @@ class Header extends Component {
 
     }
     inputChangeHandeler(event) {
+        const value = event.target.value === '' ? true : false
         this.setState({
+            active: value,
             keyword: event.target.value,
 
         })
@@ -29,7 +32,7 @@ class Header extends Component {
 
         return (
             <>
-                <header onClick={() => { console.log('i was clicked') }}>
+                <header style={{ background: `${this.state.active ? 'blue' : 'red'}` }} >
                     <div className='logo'> LOGO</div>
                     <input onChange={(e) => this.inputChangeHandeler(e)}>
                     </input>
