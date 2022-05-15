@@ -12,12 +12,12 @@ class App extends Component {
         footerText: 'I am a happy footer'
     }
     render() {
-
+        const { news, footerText } = this.state;
         return (<>
 
             <Header />
-            <NewsList news={this.state.news} />
-            <Footer text={this.state.footerText} />
+            <NewsList news={news} />
+            <Footer text={footerText} />
 
         </>);
     }
