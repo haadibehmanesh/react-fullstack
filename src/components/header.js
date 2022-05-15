@@ -27,21 +27,19 @@ class Header extends Component {
 
     render() {
 
-
-        console.log(this.state)
         return (
             <>
                 <header onClick={() => { console.log('i was clicked') }}>
                     <div className='logo'> LOGO</div>
+                    <input onChange={(e) => this.inputChangeHandeler(e)}>
+                    </input>
+                    <div>
+                        {this.state.count}
+                    </div>
+                    <button onClick={() => { this.addOne() }}>
+                        addOne
+                    </button>
                 </header>
-                <input onChange={(e) => this.inputChangeHandeler(e)}>
-                </input>
-                <div>
-                    {this.state.count}
-                </div>
-                <button onClick={() => { this.addOne() }}>
-                    addOne
-                </button>
 
 
             </>
