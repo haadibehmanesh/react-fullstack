@@ -5,6 +5,26 @@ const App = (props) => {
     count: props.initialValue,
     user: "Hadi"
   })
+  let [posts, setPosts] = useState([
+    {
+      id: 1,
+      name: 'Super awesome post',
+      body: 'The content of the post'
+    },
+    {
+      id: 2,
+      name: 'Js is great',
+      body: 'something ....'
+    }
+  ])
+  const addPost = () => {
+    let newPost = {
+      id: 3,
+      name: 'php is still awesome',
+      body: 'something new'
+    }
+    setPosts([...posts, newPost])
+  }
 
 
 
@@ -18,6 +38,16 @@ const App = (props) => {
       })))}>add </button>
       <button onClick={() => ((setState({ ...state, count: state.count - 1 })))}>minus</button>
       <button onClick={() => ((setState({ ...state, count: props.initialValue })))}>reset</button>
+      <hr />
+      {posts.map((item) => (
+        <div key={item.id}>
+          <div>Name: {item.name}</div>
+          <div>Body: {item.body}</div>
+          <hr />
+        </div>
+      ))}
+
+      <button onClick={addPost}>add post</button>
     </>
   );
 }
