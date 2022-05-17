@@ -1,10 +1,11 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import Post from './post'
 const App = (props) => {
   const [state, setState] = useState({
     count: props.initialValue,
     user: "Hadi"
   })
+  let [text, setText] = useState('text');
   let [posts, setPosts] = useState([
     {
       id: 1,
@@ -25,7 +26,16 @@ const App = (props) => {
     }
     setPosts([...posts, newPost])
   }
+  const removePosts = () => (setPosts([]))
 
+  useEffect(() => {
+    console.log('change if input values changed')
+
+  }, [text])
+  useEffect(() => {
+    console.log('Mount')
+
+  }, [])
 
 
   return (
@@ -40,14 +50,14 @@ const App = (props) => {
       <button onClick={() => ((setState({ ...state, count: props.initialValue })))}>reset</button>
       <hr />
       {posts.map((item) => (
-        <div key={item.id}>
-          <div>Name: {item.name}</div>
-          <div>Body: {item.body}</div>
-          <hr />
-        </div>
+        <Post item={item} key={item.id} />
       ))}
 
       <button onClick={addPost}>add post</button>
+      <button onClick={removePosts}>Remove posts</button>
+
+      <hr />
+      <input onChange={(e) => (setText(e.target.value))}></input>
     </>
   );
 }
