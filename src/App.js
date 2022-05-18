@@ -1,65 +1,29 @@
-import { useEffect, useState } from "react";
-import Post from './post'
-const App = (props) => {
-  const [state, setState] = useState({
-    count: props.initialValue,
-    user: "Hadi"
-  })
-  let [text, setText] = useState('text');
-  let [posts, setPosts] = useState([
-    {
-      id: 1,
-      name: 'Super awesome post',
-      body: 'The content of the post'
-    },
-    {
-      id: 2,
-      name: 'Js is great',
-      body: 'something ....'
-    }
-  ])
-  const addPost = () => {
-    let newPost = {
-      id: 3,
-      name: 'php is still awesome',
-      body: 'something new'
-    }
-    setPosts([...posts, newPost])
-  }
-  const removePosts = () => (setPosts([]))
+import { useState } from "react";
+import Age from "./components/age";
+import AgeBtn from "./components/ageBtn";
+import Count from "./components/count";
+import CountBtn from "./components/countBtn";
+import Title from "./components/title";
 
-  useEffect(() => {
-    console.log('change if input values changed')
-
-  }, [text])
-  useEffect(() => {
-    console.log('Mount')
-
-  }, [])
-
-
+const App = () => {
+  const [count, setCount] = useState(0)
+  const [age, setAge] = useState(10)
+  const incrementCount = () => (
+    setCount(count + 1)
+  )
+  const incrementAge = () => (
+    setAge(age + 1)
+  )
   return (
     <>
-      <h1>{state.user}</h1>
-      <h3>Count : {state.count}</h3>
-      <button onClick={() => ((setState({
-        ...state,
-        count: state.count + 1
-      })))}>add </button>
-      <button onClick={() => ((setState({ ...state, count: state.count - 1 })))}>minus</button>
-      <button onClick={() => ((setState({ ...state, count: props.initialValue })))}>reset</button>
-      <hr />
-      {posts.map((item) => (
-        <Post item={item} key={item.id} />
-      ))}
+      <Title />
+      <Count count={count} />
+      <CountBtn handleCount={incrementCount} />
+      <Age age={age} />
+      <AgeBtn handleAge={incrementAge} />
 
-      <button onClick={addPost}>add post</button>
-      <button onClick={removePosts}>Remove posts</button>
-
-      <hr />
-      <input onChange={(e) => (setText(e.target.value))}></input>
     </>
-  );
+  )
 }
 
 export default App;
