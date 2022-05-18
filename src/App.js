@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Age from "./components/age";
 import AgeBtn from "./components/ageBtn";
 import Count from "./components/count";
@@ -8,12 +8,13 @@ import Title from "./components/title";
 const App = () => {
   const [count, setCount] = useState(0)
   const [age, setAge] = useState(10)
-  const incrementCount = () => (
-    setCount(count + 1)
-  )
-  const incrementAge = () => (
-    setAge(age + 1)
-  )
+
+  const incrementCount = useCallback(() => (
+    setCount(prevCount => prevCount + 1)
+  ), [])
+  const incrementAge = useCallback(() => (
+    setAge(prevAge => prevAge + 1)
+  ), [])
   return (
     <>
       <Title />
