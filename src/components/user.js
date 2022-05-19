@@ -1,9 +1,11 @@
 import UserItem from "./userItem";
 
-const User = (props) => {
+const User = () => {
+
+   
     return (
         <>
-            <UserItem  {...props} />
+            <UserItem />
         </>
     );
 }
