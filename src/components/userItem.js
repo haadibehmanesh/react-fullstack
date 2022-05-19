@@ -7,7 +7,21 @@ const UserItem = () => {
 
     return (
         <>
-            User Item
+            {context.active ?
+                <div>
+                    {context.users.map((item) => (
+                        <h3 key={item.id}>
+                            Name: {item.name}
+                        </h3>
+                    ))}
+
+                </div>
+
+
+
+                : null}
+            <button onClick={context.toggleActive}>Toggle it</button>
+
         </>
     );
 }
